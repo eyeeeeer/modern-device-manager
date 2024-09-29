@@ -8,6 +8,10 @@
 
 #### This app is still in development, so please be patient and report any bugs you find.
 
+<center>
+    <img src="https://raw.githubusercontent.com/eyeeeeer/modern-device-manager/refs/heads/main/static_res/screenshot1.png" alt="Modern Device Manager app homepage screenshot" draggable="false" style="border-radius:6px;max-width:640px;" />
+</center>
+
 # How to run this app?
 **Currently app still in development which is why it is unavailable for download as compiled builds. If you want to run this app on your PC you need build it first. Below you can find a guide how you can compile this app on your PC and run it.**
 
