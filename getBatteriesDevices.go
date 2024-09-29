@@ -28,15 +28,41 @@ type Win32_BatteryDevice struct {
 	TimeToFullCharge         uint32
 }
 
+type Win32_BatteryDevicePnP struct {
+	Description            string
+	Name                   string
+	Status                 string
+	ConfigManagerErrorCode uint32
+	DeviceID               string
+	PNPDeviceID            string
+	Manufacturer           string
+	PNPClass               string
+}
+
 func GetBatteriesDevices() []Device {
+	var batteriesDevicesWin32Battery []Win32_BatteryDevice
+	var batteriesDevicesWin32PnP []Win32_BatteryDevicePnP
 	var batteriesDevicesWin32 []Win32_BatteryDevice
 	var batteriesDevices []Device
-	err := wmi.Query("SELECT * FROM Win32_Battery", &batteriesDevicesWin32)
+	err := wmi.Query("SELECT * FROM Win32_Battery", &batteriesDevicesWin32Battery)
+	err = wmi.Query("SELECT * FROM Win32_PnPEntity", &batteriesDevicesWin32PnP)
 	if err != nil {
 		fmt.Println("Error querying batteries devices:", err)
 		return nil
 	}
-	fmt.Println(batteriesDevicesWin32)
+	for _, pnpDevice := range batteriesDevicesWin32PnP {
+		if pnpDevice.PNPClass == "Battery" {
+			batteriesDevicesWin32 = append(batteriesDevicesWin32, Win32_BatteryDevice{
+				Name:                   pnpDevice.Name,
+				ConfigManagerErrorCode: pnpDevice.ConfigManagerErrorCode,
+				Status:                 pnpDevice.Status,
+				Description:            pnpDevice.Description,
+				DeviceID:               pnpDevice.DeviceID,
+				PNPDeviceID:            pnpDevice.PNPDeviceID,
+			})
+		}
+	}
+	batteriesDevicesWin32 = append(batteriesDevicesWin32, batteriesDevicesWin32Battery...)
 	for _, batteryDevice := range batteriesDevicesWin32 {
 		batteriesDevices = append(batteriesDevices, Device{
 			Name:                     batteryDevice.Name,
