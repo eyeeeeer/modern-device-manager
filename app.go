@@ -75,6 +75,17 @@ type Device struct {
 	Chemistry                uint16
 }
 
+type Win32_PNPDevice struct {
+	Description            string
+	Name                   string
+	Status                 string
+	ConfigManagerErrorCode uint32
+	DeviceID               string
+	PNPDeviceID            string
+	Manufacturer           string
+	PNPClass               string
+}
+
 // NewApp creates a new App application struct
 func NewApp() *App {
 	return &App{}
@@ -140,6 +151,7 @@ func (a *App) startup(ctx context.Context) {
 func (a *App) GetAllDevicesList() AllDeviceTypes {
 	var devices AllDeviceTypes
 	devices.Audio = GetAudioDevices()
+	devices.Apos = GetAPODevices()
 	devices.Battery = GetBatteriesDevices()
 	devices.Drive = GetDriveDevices()
 	return devices
