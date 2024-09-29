@@ -45,15 +45,16 @@ function App() {
     const [ catId, setCatId ] = useState("");
     const [ catIcon, setCatIcon ] = useState("");
     const [ catIndex, setCatIndex ] = useState(0);
-    const [ deviceList, setDeviceList ] = useState<any>();
+    const [ deviceList, setDeviceList ] = useState<DeviceList>();
 
     useEffect(() => {
         const getDevicesList = async () => {
             const devices = await GetAllDevicesList();
+            console.log(devices);
             setDeviceList(devices);
         }
 
-        getDevicesList();;
+        getDevicesList();
     }, []);
 
     return (
@@ -126,13 +127,13 @@ function App() {
                             </div>
                         ))
                     ) : (
-                        !deviceList[catId as keyof DeviceList] ? (
+                        deviceList && deviceList[catId as keyof DeviceList].length < 1 ? (
                             <div className="deviceTypeListPanel__DevicesCategoryEmptyContainer">
                                 <span>You don't have a {catList[catIndex].catName.replace("devices", "")} devices.</span>
                             </div>
                         ) : (
                             <div className="deviceTypeListPanel__TypesList">
-                                {deviceList[catId as keyof DeviceList].map((drive, index) => (
+                                {deviceList && deviceList[catId as keyof DeviceList].map((drive, index) => (
                                     <div className="deviceTypeListPanel__TypesList__ListItem" key={index}>
                                         <div>
                                             <div>
