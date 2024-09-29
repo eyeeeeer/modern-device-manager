@@ -1,0 +1,127 @@
+[
+    {
+        "catId": "audio",
+        "catIcon": "speaker",
+        "catName": "Audio inputs and outputs"
+    },
+    {
+        "catId": "apos",
+        "catIcon": "apo",
+        "catName": "Audio Processing Objects (APOs)"
+    },
+    {
+        "catId": "battery",
+        "catIcon": "battery",
+        "catName": "Batteries"
+    },
+    {
+        "catId": "biometric",
+        "catIcon": "biometric",
+        "catName": "Biometric devices"
+    },
+    {
+        "catId": "bluetooth",
+        "catIcon": "bluetooth",
+        "catName": "Bluetooth"
+    },
+    {
+        "catId": "camera",
+        "catIcon": "webcam",
+        "catName": "Cameras"
+    },
+    {
+        "catId": "pc",
+        "catIcon": "pc",
+        "catName": "Computer"
+    },
+    {
+        "catId": "drive",
+        "catIcon": "ssd",
+        "catName": "Disk drives"
+    },
+    {
+        "catId": "gpu",
+        "catIcon": "gpu",
+        "catName": "Graphics cards"
+    },
+    {
+        "catId": "firmware",
+        "catIcon": "transistor",
+        "catName": "Firmware"
+    },
+    {
+        "catId": "hid",
+        "catIcon": "mouse",
+        "catName": "Human Interface Devices (HID)"
+    },
+    {
+        "catId": "keyboard",
+        "catIcon": "keyboard",
+        "catName": "Keyboards"
+    },
+    {
+        "catId": "mouse",
+        "catIcon": "mouse",
+        "catName": "Mice and other pointing devices"
+    },
+    {
+        "catId": "display",
+        "catIcon": "display",
+        "catName": "Displays"
+    },
+    {
+        "catId": "network",
+        "catIcon": "network",
+        "catName": "Network adapters"
+    },
+    {
+        "catId": "printq",
+        "catIcon": "printer",
+        "catName": "Print queues"
+    },
+    {
+        "catId": "cpu",
+        "catIcon": "cpu",
+        "catName": "Processors"
+    },
+    {
+        "catId": "secure",
+        "catIcon": "keychain",
+        "catName": "Security devices"
+    },
+    {
+        "catId": "softwarecomponents",
+        "catIcon": "component",
+        "catName": "Software components"
+    },
+    {
+        "catId": "softwaredevices",
+        "catIcon": "softwaredevices",
+        "catName": "Software devices"
+    },
+    {
+        "catId": "sound",
+        "catIcon": "speaker",
+        "catName": "Sound, video and game controllers"
+    },
+    {
+        "catId": "memoryc",
+        "catIcon": "memorycontroller",
+        "catName": "Storage controllers"
+    },
+    {
+        "catId": "sysdev",
+        "catIcon": "gears",
+        "catName": "System devices"
+    },
+    {
+        "catId": "usbc",
+        "catIcon": "usb",
+        "catName": "Universal Serial Bus (USB) controllers"
+    },
+    {
+        "catId": "usbmgr",
+        "catIcon": "usb",
+        "catName": "USB Connector Managers"
+    }
+]
