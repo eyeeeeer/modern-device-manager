@@ -1,19 +1,6 @@
-# README
+# Modern Device Manager
 
-## About
-
-This is the official Wails React-TS template.
-
-You can configure the project by editing `wails.json`. More information about the project settings can be found
-here: https://wails.io/docs/reference/project-config
-
-## Live Development
-
-To run in live development mode, run `wails dev` in the project directory. This will run a Vite development
-server that will provide very fast hot reload of your frontend changes. If you want to develop in a browser
-and have access to your Go methods, there is also a dev server that runs on http://localhost:34115. Connect
-to this in your browser, and you can call your Go code from devtools.
-
-## Building
-
-To build a redistributable, production mode package, use `wails build`.
+This repository contains a source code of the modern device manager app. This app written in golang + typescript programming languages via wails + react framework stack.
+This app is a recreation of the original Windows Device Manager app. This app target: bring a up-to-date fluent design style to this app, simplify this app for new users.
+This app is fully open-source and free for all. Everyone welcome to contribute and fix bugs. If you like this app please star repository and if you want you can donate me via PayPal.
+This app is still in development, so please be patient and report any bugs you find.
