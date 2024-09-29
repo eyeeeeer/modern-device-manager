@@ -76,5 +76,9 @@ func GetBatteriesDevices() []Device {
 			PNPDeviceID:              batteryDevice.PNPDeviceID,
 		})
 	}
-	return batteriesDevices
+	if len(batteriesDevices) < 1 {
+		return []Device{}
+	} else {
+		return batteriesDevices
+	}
 }

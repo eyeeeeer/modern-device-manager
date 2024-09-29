@@ -41,5 +41,9 @@ func GetAudioDevices() []Device {
 			PNPDeviceID:            audioDevice.PNPDeviceID,
 		})
 	}
-	return audioDevices
+	if len(audioDevices) < 1 {
+		return []Device{}
+	} else {
+		return audioDevices
+	}
 }

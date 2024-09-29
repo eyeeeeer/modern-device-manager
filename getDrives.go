@@ -42,5 +42,9 @@ func GetDriveDevices() []Device {
 			PNPDeviceID:            "",
 		})
 	}
-	return diskDrives
+	if len(diskDrives) < 1 {
+		return []Device{}
+	} else {
+		return diskDrives
+	}
 }

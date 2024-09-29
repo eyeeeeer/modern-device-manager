@@ -36,5 +36,9 @@ func GetAPODevices() []Device {
 			PNPDeviceID:            apoDevice.PNPDeviceID,
 		})
 	}
-	return aposDevices
+	if len(aposDevices) < 1 {
+		return []Device{}
+	} else {
+		return aposDevices
+	}
 }

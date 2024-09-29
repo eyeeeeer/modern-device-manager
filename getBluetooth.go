@@ -26,15 +26,19 @@ func GetBluetoothDevices() []Device {
 			})
 		}
 	}
-	for _, apoDevice := range btDevicesWin32 {
+	for _, btDevice := range btDevicesWin32 {
 		btDevices = append(btDevices, Device{
-			Name:                   apoDevice.Name,
-			ConfigManagerErrorCode: apoDevice.ConfigManagerErrorCode,
-			Status:                 apoDevice.Status,
-			Description:            apoDevice.Description,
-			DeviceID:               apoDevice.DeviceID,
-			PNPDeviceID:            apoDevice.PNPDeviceID,
+			Name:                   btDevice.Name,
+			ConfigManagerErrorCode: btDevice.ConfigManagerErrorCode,
+			Status:                 btDevice.Status,
+			Description:            btDevice.Description,
+			DeviceID:               btDevice.DeviceID,
+			PNPDeviceID:            btDevice.PNPDeviceID,
 		})
 	}
-	return btDevices
+	if len(btDevices) < 1 {
+		return []Device{}
+	} else {
+		return btDevices
+	}
 }
