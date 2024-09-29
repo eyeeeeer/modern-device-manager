@@ -13,6 +13,20 @@ export namespace main {
 	    DeviceID: string;
 	    MPU401Address: number;
 	    PNPDeviceID: string;
+	    TimeOnBattery: number;
+	    TimeToFullCharge: number;
+	    SmartBatteryVersion: string;
+	    EstimatedChargeRemaining: number;
+	    EstimatedRunTime: number;
+	    ExpectedBatteryLife: number;
+	    ExpectedLife: number;
+	    FullChargeCapacity: number;
+	    MaxRechargeTime: number;
+	    DesignCapacity: number;
+	    DesignVoltage: number;
+	    BatteryRechargeTime: number;
+	    BatteryStatus: number;
+	    Chemistry: number;
 	
 	    static createFrom(source: any = {}) {
 	        return new Device(source);
@@ -32,6 +46,20 @@ export namespace main {
 	        this.DeviceID = source["DeviceID"];
 	        this.MPU401Address = source["MPU401Address"];
 	        this.PNPDeviceID = source["PNPDeviceID"];
+	        this.TimeOnBattery = source["TimeOnBattery"];
+	        this.TimeToFullCharge = source["TimeToFullCharge"];
+	        this.SmartBatteryVersion = source["SmartBatteryVersion"];
+	        this.EstimatedChargeRemaining = source["EstimatedChargeRemaining"];
+	        this.EstimatedRunTime = source["EstimatedRunTime"];
+	        this.ExpectedBatteryLife = source["ExpectedBatteryLife"];
+	        this.ExpectedLife = source["ExpectedLife"];
+	        this.FullChargeCapacity = source["FullChargeCapacity"];
+	        this.MaxRechargeTime = source["MaxRechargeTime"];
+	        this.DesignCapacity = source["DesignCapacity"];
+	        this.DesignVoltage = source["DesignVoltage"];
+	        this.BatteryRechargeTime = source["BatteryRechargeTime"];
+	        this.BatteryStatus = source["BatteryStatus"];
+	        this.Chemistry = source["Chemistry"];
 	    }
 	}
 	export class AllDeviceTypes {
