@@ -47,18 +47,32 @@ type AllDeviceTypes struct {
 }
 
 type Device struct {
-	Name                   string
-	Size                   int64
-	SerialNumber           string
-	Manufacturer           string
-	MediaType              string
-	ConfigManagerErrorCode uint32
-	Model                  string
-	Status                 string
-	Description            string
-	DeviceID               string
-	MPU401Address          uint32
-	PNPDeviceID            string
+	Name                     string
+	Size                     int64
+	SerialNumber             string
+	Manufacturer             string
+	MediaType                string
+	ConfigManagerErrorCode   uint32
+	Model                    string
+	Status                   string
+	Description              string
+	DeviceID                 string
+	MPU401Address            uint32
+	PNPDeviceID              string
+	TimeOnBattery            uint32
+	TimeToFullCharge         uint32
+	SmartBatteryVersion      string
+	EstimatedChargeRemaining uint16
+	EstimatedRunTime         uint32
+	ExpectedBatteryLife      uint32
+	ExpectedLife             uint32
+	FullChargeCapacity       uint32
+	MaxRechargeTime          uint32
+	DesignCapacity           uint32
+	DesignVoltage            uint64
+	BatteryRechargeTime      uint32
+	BatteryStatus            uint16
+	Chemistry                uint16
 }
 
 // NewApp creates a new App application struct
@@ -95,7 +109,7 @@ func (a *App) startup(ctx context.Context) {
 			
 			For Each objOS in colOS
 				If CInt(objOS.BuildNumber) < 22000 Then
-					MsgBox "Oops... This app can be runned only on Windows 11. Upgrade your system and try again.", vbCritical, "Device Manager"
+					MsgBox "Oops... This app can be run only on Windows 11. Update your system and try again.", vbCritical, "Device Manager"
 				End If
 			Next
 		`
@@ -126,6 +140,7 @@ func (a *App) startup(ctx context.Context) {
 func (a *App) GetAllDevicesList() AllDeviceTypes {
 	var devices AllDeviceTypes
 	devices.Audio = GetAudioDevices()
+	devices.Battery = GetBatteriesDevices()
 	devices.Drive = GetDriveDevices()
 	return devices
 }
