@@ -14,31 +14,31 @@ type catListType = {
 }[];
 
 interface DeviceList {
-    audio: string[];
-    apos: string[];
-    battery: string[];
-    biometric: string[];
-    bluetooth: string[];
-    camera: string[];
-    pc: string[];
+    audio: main.Device[];
+    apos: main.Device[];
+    battery: main.Device[];
+    biometric: main.Device[];
+    bluetooth: main.Device[];
+    camera: main.Device[];
+    pc: main.Device[];
     drive: main.Device[];
-    gpu: string[];
-    firmware: string[];
-    hid: string[];
-    keyboard: string[];
-    mouse: string[];
-    display: string[];
-    network: string[];
-    printq: string[];
-    cpu: string[];
-    secure: string[];
-    softwarecomponents: string[];
-    softwaredevices: string[];
-    sound: string[];
-    memoryc: string[];
-    sysdev: string[];
-    usbc: string[];
-    usbmgr: string[];
+    gpu: main.Device[];
+    firmware: main.Device[];
+    hid: main.Device[];
+    keyboard: main.Device[];
+    mouse: main.Device[];
+    display: main.Device[];
+    network: main.Device[];
+    printq: main.Device[];
+    cpu: main.Device[];
+    secure: main.Device[];
+    softwarecomponents: main.Device[];
+    softwaredevices: main.Device[];
+    sound: main.Device[];
+    memoryc: main.Device[];
+    sysdev: main.Device[];
+    usbc: main.Device[];
+    usbmgr: main.Device[];
 }
 
 function App() {
@@ -84,7 +84,7 @@ function App() {
                                 <Field validationMessage="71.3 GB free" validationState="none"></Field>
                             </div>
                         </div>
-                        <Link href="">
+                        <Link href="ms-settings:about">
                             View more system information in Settings
                         </Link>
                     </div>
