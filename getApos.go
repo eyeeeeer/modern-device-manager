@@ -26,7 +26,6 @@ func GetAPODevices() []Device {
 			})
 		}
 	}
-	fmt.Println(aposDevicesWin32)
 	for _, apoDevice := range aposDevicesWin32 {
 		aposDevices = append(aposDevices, Device{
 			Name:                   apoDevice.Name,
