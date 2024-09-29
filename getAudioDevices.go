@@ -22,7 +22,7 @@ func GetAudioDevices() []Device {
 	var audioDevices []Device
 	err := wmi.Query("SELECT * FROM Win32_SoundDevice", &audioDevicesWin32)
 	if err != nil {
-		fmt.Println("Error querying audio devices:", err)
+		fmt.Println("Error querying sound devices:", err)
 		return nil
 	}
 	for _, audioDevice := range audioDevicesWin32 {
