@@ -5,39 +5,34 @@ import (
 	"github.com/StackExchange/wmi"
 )
 
-type Win32_SoundDevice struct {
-	Name                   string
-	ConfigManagerErrorCode uint32
-	Description            string
-	DeviceID               string
-	Manufacturer           string
-	MPU401Address          uint32
-	PNPDeviceID            string
-	ProductName            string
-	Status                 string
-}
-
 func GetAudioDevices() []Device {
-	var audioDevicesWin32 []Win32_SoundDevice
+	var devicesWin32PnP []Win32_PNPDevice
+	var audioDevicesWin32 []Win32_PNPDevice
 	var audioDevices []Device
-	err := wmi.Query("SELECT * FROM Win32_SoundDevice", &audioDevicesWin32)
+	err := wmi.Query("SELECT * FROM Win32_PnPEntity", &devicesWin32PnP)
 	if err != nil {
-		fmt.Println("Error querying sound devices:", err)
+		fmt.Println("Error querying audio I/O devices:", err)
 		return nil
+	}
+	for _, pnpDevice := range devicesWin32PnP {
+		if pnpDevice.PNPClass == "AudioEndpoint" {
+			audioDevicesWin32 = append(audioDevicesWin32, Win32_PNPDevice{
+				Name:                   pnpDevice.Name,
+				ConfigManagerErrorCode: pnpDevice.ConfigManagerErrorCode,
+				Status:                 pnpDevice.Status,
+				Description:            pnpDevice.Description,
+				DeviceID:               pnpDevice.DeviceID,
+				PNPDeviceID:            pnpDevice.PNPDeviceID,
+			})
+		}
 	}
 	for _, audioDevice := range audioDevicesWin32 {
 		audioDevices = append(audioDevices, Device{
 			Name:                   audioDevice.Name,
-			Model:                  "",
 			ConfigManagerErrorCode: audioDevice.ConfigManagerErrorCode,
 			Status:                 audioDevice.Status,
-			SerialNumber:           "",
 			Description:            audioDevice.Description,
 			DeviceID:               audioDevice.DeviceID,
-			MediaType:              "",
-			Manufacturer:           audioDevice.Manufacturer,
-			Size:                   0,
-			MPU401Address:          audioDevice.MPU401Address,
 			PNPDeviceID:            audioDevice.PNPDeviceID,
 		})
 	}
