@@ -26,14 +26,14 @@ func GetCameraDevices() []Device {
 			})
 		}
 	}
-	for _, btDevice := range camDevicesWin32 {
+	for _, camDevice := range camDevicesWin32 {
 		camDevices = append(camDevices, Device{
-			Name:                   btDevice.Name,
-			ConfigManagerErrorCode: btDevice.ConfigManagerErrorCode,
-			Status:                 btDevice.Status,
-			Description:            btDevice.Description,
-			DeviceID:               btDevice.DeviceID,
-			PNPDeviceID:            btDevice.PNPDeviceID,
+			Name:                   camDevice.Name,
+			ConfigManagerErrorCode: camDevice.ConfigManagerErrorCode,
+			Status:                 camDevice.Status,
+			Description:            camDevice.Description,
+			DeviceID:               camDevice.DeviceID,
+			PNPDeviceID:            camDevice.PNPDeviceID,
 		})
 	}
 	if len(camDevices) < 1 {
