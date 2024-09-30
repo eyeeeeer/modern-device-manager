@@ -71,8 +71,15 @@ function App() {
                             <span>13th Gen Intel(R) Core(TM) i7-13620H@ 2.50GHz</span>
                         </div>
                         <div className="deviceSpecs__pcGPUsContainer">
-                            <span>Intel(R) UHD Graphics</span>
-                            <span>NVIDIA GeForce RTX 4070 Laptop GPU</span>
+                            {deviceList && deviceList.gpu.length < 1 ? (
+                                <span>No GPUs (you probably won't see this message without GPU :D)</span>
+                            ) : (
+                                deviceList?.gpu.map((gpu, index) => (
+                                    <span>
+                                        {gpu.Name}
+                                    </span>
+                                ))
+                            )}
                         </div>
                         <div className="deviceSpecs__pcRAMContainer">
                             <span>16 GB DDR5</span>
