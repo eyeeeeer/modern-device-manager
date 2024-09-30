@@ -18,6 +18,31 @@ type App struct {
 	ctx context.Context
 }
 
+type DeviceOverviewData struct {
+	Model           string
+	Arch            int
+	DeviceName      string
+	CPUName         string
+	GPUList         []Device
+	RamSize         int64
+	RamType         int
+	SystemPartition []DrivePartition
+}
+
+type DrivePartition struct {
+	Label       string
+	Letter      string
+	Size        int64
+	FreeSpace   int64
+	Type        int
+	isBootable  bool
+	isPageFile  bool
+	isCrashDump bool
+	isRecovery  bool
+	isEFI       bool
+	FSType      int
+}
+
 type AllDeviceTypes struct {
 	Audio              []Device `json:"audio"`
 	Apos               []Device `json:"apos"`
