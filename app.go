@@ -155,6 +155,7 @@ func (a *App) GetAllDevicesList() AllDeviceTypes {
 	devices.Battery = GetBatteriesDevices()
 	devices.Biometric = GetBiometricDevices()
 	devices.Bluetooth = GetBluetoothDevices()
+	devices.Camera = GetCameraDevices()
 	devices.Drive = GetDriveDevices()
 	return devices
 }
