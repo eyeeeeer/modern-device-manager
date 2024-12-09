@@ -7,7 +7,7 @@ toolchain go1.22.5
 require (
 	github.com/StackExchange/wmi v1.2.1
 	github.com/wailsapp/wails/v2 v2.9.2
-	golang.org/x/sys v0.26.0
+	golang.org/x/sys v0.28.0
 )
 
 require (
