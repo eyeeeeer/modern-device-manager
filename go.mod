@@ -5,7 +5,7 @@ go 1.23.0
 require (
 	github.com/StackExchange/wmi v1.2.1
 	github.com/wailsapp/wails/v2 v2.10.2
-	golang.org/x/sys v0.31.0
+	golang.org/x/sys v0.35.0
 )
 
 require (
