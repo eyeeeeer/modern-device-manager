@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Field, Link, ProgressBar, SearchBox } from "@fluentui/react-components";
 import { ChevronLeftRegular, ChevronRightRegular } from "@fluentui/react-icons";
-import {GetAllDevicesList} from "../wailsjs/go/main/App";
+import {GetAllDevicesList, GetOverviewInfo} from "../wailsjs/go/main/App";
 
 import catList from "./device_types.json";
 import { main } from "../wailsjs/go/models";
@@ -46,15 +46,17 @@ function App() {
     const [ catIcon, setCatIcon ] = useState("");
     const [ catIndex, setCatIndex ] = useState(0);
     const [ deviceList, setDeviceList ] = useState<DeviceList>();
+    const [ overviewData, setOverviewData ] = useState<main.OverviewInfo>();
 
     useEffect(() => {
-        const getDevicesList = async () => {
+        const getData = async () => {
             const devices = await GetAllDevicesList();
-            console.log(devices);
+            const overviewData = await GetOverviewInfo();
             setDeviceList(devices);
+            setOverviewData(overviewData);
         }
 
-        getDevicesList();
+        getData();
     }, []);
 
     return (
@@ -68,7 +70,7 @@ function App() {
                     <h3 className="deviceSpecs__pcName">eyeeeeer-laptop</h3>
                     <div className="deviceSpecs__container">
                         <div className="deviceSpecs__pcCPUsContainer">
-                            <span>13th Gen Intel(R) Core(TM) i7-13620H@ 2.50GHz</span>
+                            <span>{overviewData?.CPUName}@ 2.50GHz</span>
                         </div>
                         <div className="deviceSpecs__pcGPUsContainer">
                             {deviceList && deviceList.gpu.length < 1 ? (
@@ -82,7 +84,7 @@ function App() {
                             )}
                         </div>
                         <div className="deviceSpecs__pcRAMContainer">
-                            <span>16 GB DDR5</span>
+                            <span>{overviewData?.ramSize} GB DDR5</span>
                         </div>
                         <div className="deviceSpecs__pcPrimaryDriveContainer">
                             <span>Windows (C:) - 476 GB</span>

@@ -71,6 +71,16 @@ type AllDeviceTypes struct {
 	Usbmgr             []Device `json:"usbmgr"`
 }
 
+type OverviewInfo struct {
+	Manufacturer   string            `json:"manufacturer"`
+	Model          string            `json:"model"`
+	OSBuild        string            `json:"OSBuild"`
+	PcName         string            `json:"pcName"`
+	CPUName        string            `json:"CPUName"`
+	RamSize        int64             `json:"ramSize"`
+	PartitionsData *[]DrivePartition `json:"partitionsData"`
+}
+
 type Device struct {
 	Name                     string
 	Size                     int64
@@ -201,4 +211,24 @@ func (a *App) GetAllDevicesList() AllDeviceTypes {
 	devices.Usbc = GetUSBControllersDevices()
 	devices.Usbmgr = GetUSBManagersDevices()
 	return devices
+}
+
+func (a *App) GetOverviewInfo() OverviewInfo {
+	var data OverviewInfo
+
+	k, err := registry.OpenKey(registry.LOCAL_MACHINE, `HARDWARE\DESCRIPTION\System\CentralProcessor\0`, registry.QUERY_VALUE)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer k.Close()
+
+	cpuName, _, err := k.GetStringValue("ProcessorNameString")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	data.CPUName = cpuName
+	data.RamSize = GetRam()
+
+	return data
 }

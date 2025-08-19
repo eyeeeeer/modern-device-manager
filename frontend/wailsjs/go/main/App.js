@@ -5,3 +5,7 @@
 export function GetAllDevicesList() {
   return window['go']['main']['App']['GetAllDevicesList']();
 }
+
+export function GetOverviewInfo() {
+  return window['go']['main']['App']['GetOverviewInfo']();
+}

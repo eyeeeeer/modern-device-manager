@@ -3,3 +3,5 @@
 import {main} from '../models';
 
 export function GetAllDevicesList():Promise<main.AllDeviceTypes>;
+
+export function GetOverviewInfo():Promise<main.OverviewInfo>;
